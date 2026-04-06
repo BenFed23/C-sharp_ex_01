@@ -8,8 +8,8 @@ namespace Ex01_01
 {
     internal class Program
     {
-        protected const int k_AmountOfBinaryNumbers = 4;
-        protected const int k_LengthOfBinaryNumbers = 7;
+        private const int k_AmountOfBinaryNumbers = 4;
+        private const int k_LengthOfBinaryNumbers = 7;
 
         public static void Main()
         {

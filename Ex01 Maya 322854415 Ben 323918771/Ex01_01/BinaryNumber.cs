@@ -11,22 +11,22 @@ namespace Ex01_01
         private string m_BinaryNumberString;
         private int m_DecimalValueOfBinaryNumber;
 
-        public BinaryNumber(string BinaryNumberString)
+        public BinaryNumber(string i_BinaryNumberStringFromUser)
         {
-            m_BinaryNumberString = BinaryNumberString;
+            m_BinaryNumberString = i_BinaryNumberStringFromUser;
         }
 
-        public static bool isValid(string binaryNumberString, int LengthOfBinaryNumber)
+        public static bool isValid(string i_BinaryNumberStringFromUser, int i_RequestedLengthOfBinaryNumber)
         {
-            if (binaryNumberString.Length < LengthOfBinaryNumber)
+            if (i_BinaryNumberStringFromUser.Length < i_RequestedLengthOfBinaryNumber)
             {
-                System.Console.Error.WriteLine("Invalid input size. Please enter a 7 digit binary number");
+                System.Console.Error.WriteLine($"Invalid input size. Please enter a {i_RequestedLengthOfBinaryNumber} digit binary number");
                 return false;
             }
 
-            for (int i = 0; i < LengthOfBinaryNumber; ++i)
+            for (int i = 0; i < i_RequestedLengthOfBinaryNumber; ++i)
             {
-                if (binaryNumberString[i] != '0' && binaryNumberString[i] != '1')
+                if (i_BinaryNumberStringFromUser[i] != '0' && i_BinaryNumberStringFromUser[i] != '1')
                 {
                     System.Console.Error.WriteLine("Invalid input character. Please enter only 0 or 1");
                     return false;
