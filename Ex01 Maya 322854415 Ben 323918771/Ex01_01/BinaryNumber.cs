@@ -14,6 +14,12 @@ namespace Ex01_01
         public BinaryNumber(string i_BinaryNumberStringFromUser)
         {
             m_BinaryNumberString = i_BinaryNumberStringFromUser;
+            m_DecimalValueOfBinaryNumber = convertBinaryStringToDecimal(i_BinaryNumberStringFromUser);
+        }
+
+        public int getDecimalValue()
+        {
+            return m_DecimalValueOfBinaryNumber;
         }
 
         public static bool isValid(string i_BinaryNumberStringFromUser, int i_RequestedLengthOfBinaryNumber)
@@ -34,6 +40,20 @@ namespace Ex01_01
             }
 
             return true;
+        }
+
+        public static int convertBinaryStringToDecimal(string i_BinaryNumberStringFromUser)
+        {
+            int decimalValueOfBinaryString = 0;
+            int binaryStringLength = i_BinaryNumberStringFromUser.Length;
+            for (int i = 0; i < binaryStringLength; ++i)
+            {
+                if (i_BinaryNumberStringFromUser[i] == '1')
+                {
+                    decimalValueOfBinaryString += (int)Math.Pow(2, binaryStringLength - (i + 1));
+                }
+            }
+            return decimalValueOfBinaryString;
         }
     }
 }

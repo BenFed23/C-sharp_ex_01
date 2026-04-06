@@ -27,11 +27,11 @@ namespace Ex01_01
                     --i;
                 }
 
+            }
 
-
-
-
-
+            for (int i = 0; i < k_AmountOfBinaryNumbers; i++)
+            {
+                System.Console.WriteLine($"{arrayOfBinaryNumbersFromUser[i].getDecimalValue()}");
             }
         }
     }
