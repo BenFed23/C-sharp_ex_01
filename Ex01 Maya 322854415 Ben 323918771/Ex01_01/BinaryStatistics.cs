@@ -40,6 +40,38 @@ namespace Ex01_01
             return sum/(float)arraySize;
         }
 
+        public static int findBinaryArrLongestBitSequence(BinaryNumber[] i_binaryNumbers, out BinaryNumber o_maxSequenceBinaryNumber)
+        {
+            int maxSequenceLength = 1;
+            int arraySize = i_binaryNumbers.Length;
+            o_maxSequenceBinaryNumber = null;
+
+            for (int i = 0; i < arraySize; ++i)
+            {
+                int tempSequence = 1;
+                int lengthofBinaryNumberString = i_binaryNumbers[i].getLengthofBinaryNumberString();
+                string binaryNumberString = i_binaryNumbers[i].getBinaryNumberString();
+                for (int j = 0; j < lengthofBinaryNumberString - 1; ++j)
+                {
+                    if (binaryNumberString[j] == binaryNumberString[j+1])
+                    {
+                        ++tempSequence;
+                        if (tempSequence > maxSequenceLength)
+                        {
+                            maxSequenceLength = tempSequence;
+                            o_maxSequenceBinaryNumber = i_binaryNumbers[i];
+                        }
+                    }
+                    else
+                    {
+                        tempSequence = 1;
+                    }
+                }
+            }
+
+            return maxSequenceLength;
+        }
+
         public static int findAmountOf1InBinaryArr(BinaryNumber[] i_binaryNumbers) 
         {
             int counterOf1 = 0;
@@ -48,7 +80,8 @@ namespace Ex01_01
             for (int i = 0; i < arraySize; ++i)
             {
                 string binaryNumberString = i_binaryNumbers[i].getBinaryNumberString();
-                for (int j = 0; j < i_binaryNumbers[i].getLengthofBinaryNumberString(); ++j) 
+                int lengthofBinaryNumberString = i_binaryNumbers[i].getLengthofBinaryNumberString();
+                for (int j = 0; j < lengthofBinaryNumberString; ++j) 
                 {
                     if (binaryNumberString[j] == '1')
                     {

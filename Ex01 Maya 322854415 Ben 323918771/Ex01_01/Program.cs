@@ -45,8 +45,14 @@ namespace Ex01_01
             float binaryArrAverage = BinaryStatistics.calculateBinaryArrAverage(arrayOfBinaryNumbersFromUser);
             System.Console.WriteLine($"Average: {binaryArrAverage:F2}");
 
+            BinaryNumber maxSequenceBinaryNumber;
+            int maxSequenceLength = BinaryStatistics.findBinaryArrLongestBitSequence(arrayOfBinaryNumbersFromUser, out maxSequenceBinaryNumber);
+            System.Console.WriteLine($"Longest bit sequence: {maxSequenceLength} ({maxSequenceBinaryNumber.getBinaryNumberString()})");
+
             int amountOf1Bits = BinaryStatistics.findAmountOf1InBinaryArr(arrayOfBinaryNumbersFromUser);
             System.Console.WriteLine($"Total 1-bits: {amountOf1Bits}");
+
+            
 
         }
     }
