@@ -22,6 +22,11 @@ namespace Ex01_01
             return m_DecimalValueOfBinaryNumber;
         }
 
+        public string getBinaryNumberString()
+        {
+            return m_BinaryNumberString;
+        }
+
         public static bool isValid(string i_BinaryNumberStringFromUser, int i_RequestedLengthOfBinaryNumber)
         {
             if (i_BinaryNumberStringFromUser.Length < i_RequestedLengthOfBinaryNumber)

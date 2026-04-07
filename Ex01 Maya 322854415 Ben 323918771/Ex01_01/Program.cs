@@ -29,10 +29,22 @@ namespace Ex01_01
 
             }
 
-            for (int i = 0; i < k_AmountOfBinaryNumbers; i++)
+            BinaryStatistics.sortBinaryArrInDescendingOrder(arrayOfBinaryNumbersFromUser);
+            System.Console.Write($"Decimal numbers in descending order: ");
+
+            for (int i = 0; i < k_AmountOfBinaryNumbers; ++i)
             {
-                System.Console.WriteLine($"{arrayOfBinaryNumbersFromUser[i].getDecimalValue()}");
+                System.Console.Write($"{arrayOfBinaryNumbersFromUser[i].getDecimalValue()} ({arrayOfBinaryNumbersFromUser[i].getBinaryNumberString()})");
+                if (i != k_AmountOfBinaryNumbers - 1)
+                {
+                    System.Console.Write(", ");
+                }
             }
+            
+            System.Console.WriteLine();
+            float BinaryArrAverage = BinaryStatistics.calculateBinaryArrAverage(arrayOfBinaryNumbersFromUser);
+            System.Console.WriteLine($"Average: {BinaryArrAverage:F2}");
+
         }
     }
 }
