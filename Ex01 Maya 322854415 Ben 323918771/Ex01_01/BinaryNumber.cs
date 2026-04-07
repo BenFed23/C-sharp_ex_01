@@ -27,6 +27,11 @@ namespace Ex01_01
             return m_BinaryNumberString;
         }
 
+        public int getLengthofBinaryNumberString()
+        {
+            return m_BinaryNumberString.Length;
+        }
+
         public static bool isValid(string i_BinaryNumberStringFromUser, int i_RequestedLengthOfBinaryNumber)
         {
             if (i_BinaryNumberStringFromUser.Length < i_RequestedLengthOfBinaryNumber)

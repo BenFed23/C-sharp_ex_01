@@ -39,5 +39,25 @@ namespace Ex01_01
 
             return sum/(float)arraySize;
         }
+
+        public static int findAmountOf1InBinaryArr(BinaryNumber[] i_binaryNumbers) 
+        {
+            int counterOf1 = 0;
+            int arraySize = i_binaryNumbers.Length;
+
+            for (int i = 0; i < arraySize; ++i)
+            {
+                string binaryNumberString = i_binaryNumbers[i].getBinaryNumberString();
+                for (int j = 0; j < i_binaryNumbers[i].getLengthofBinaryNumberString(); ++j) 
+                {
+                    if (binaryNumberString[j] == '1')
+                    {
+                        counterOf1++;
+                    }
+                }
+            }
+
+            return counterOf1;
+        }
     }
 }

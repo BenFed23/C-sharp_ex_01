@@ -42,8 +42,11 @@ namespace Ex01_01
             }
             
             System.Console.WriteLine();
-            float BinaryArrAverage = BinaryStatistics.calculateBinaryArrAverage(arrayOfBinaryNumbersFromUser);
-            System.Console.WriteLine($"Average: {BinaryArrAverage:F2}");
+            float binaryArrAverage = BinaryStatistics.calculateBinaryArrAverage(arrayOfBinaryNumbersFromUser);
+            System.Console.WriteLine($"Average: {binaryArrAverage:F2}");
+
+            int amountOf1Bits = BinaryStatistics.findAmountOf1InBinaryArr(arrayOfBinaryNumbersFromUser);
+            System.Console.WriteLine($"Total 1-bits: {amountOf1Bits}");
 
         }
     }
