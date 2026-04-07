@@ -92,5 +92,33 @@ namespace Ex01_01
 
             return counterOf1;
         }
+
+        public static BinaryNumber findmostTransitionsInBinaryNumber(BinaryNumber[] i_binaryNumbers, out int o_maxAmountOfTransitions)
+        {
+            o_maxAmountOfTransitions = 0;
+            int arraySize = i_binaryNumbers.Length;
+            BinaryNumber mostTransitionsBinaryNumber = null;
+
+            for (int i = 0; i < arraySize; ++i)
+            {
+                int tempTransitionsCounter = 0;
+                int lengthofBinaryNumberString = i_binaryNumbers[i].getLengthofBinaryNumberString();
+                string binaryNumberString = i_binaryNumbers[i].getBinaryNumberString();
+                for (int j = 0; j < lengthofBinaryNumberString - 1; ++j)
+                {
+                    if (binaryNumberString[j] != binaryNumberString[j + 1])
+                    {
+                        ++tempTransitionsCounter;
+                        if (tempTransitionsCounter > o_maxAmountOfTransitions)
+                        {
+                            o_maxAmountOfTransitions = tempTransitionsCounter;
+                            mostTransitionsBinaryNumber = i_binaryNumbers[i];
+                        }
+                    }
+                }
+            }
+
+            return mostTransitionsBinaryNumber;
+        }
     }
 }

@@ -14,6 +14,7 @@ namespace Ex01_01
         public static void Main()
         {
             BinaryNumber[] arrayOfBinaryNumbersFromUser = new BinaryNumber[k_AmountOfBinaryNumbers];
+            System.Console.WriteLine("Please insert 4 binary numbers containing 7 bits");
 
             for (int i = 0; i < k_AmountOfBinaryNumbers; ++i)
             {
@@ -52,7 +53,12 @@ namespace Ex01_01
             int amountOf1Bits = BinaryStatistics.findAmountOf1InBinaryArr(arrayOfBinaryNumbersFromUser);
             System.Console.WriteLine($"Total 1-bits: {amountOf1Bits}");
 
-            
+            int maxAmountOfTransitions;
+            BinaryNumber mostTransitionsBinaryNumber = BinaryStatistics.findmostTransitionsInBinaryNumber(arrayOfBinaryNumbersFromUser, out maxAmountOfTransitions);
+            System.Console.WriteLine($"Number with most transitions: {mostTransitionsBinaryNumber.getDecimalValue()} ({mostTransitionsBinaryNumber.getBinaryNumberString()}) - {maxAmountOfTransitions} transitions");
+
+
+
 
         }
     }
