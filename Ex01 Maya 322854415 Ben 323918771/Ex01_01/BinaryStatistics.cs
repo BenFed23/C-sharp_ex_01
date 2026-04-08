@@ -40,32 +40,28 @@ namespace Ex01_01
             return sum/(float)arraySize;
         }
 
-        public static int findBinaryArrLongestBitSequence(BinaryNumber[] i_binaryNumbers, out BinaryNumber o_maxSequenceBinaryNumber)
+        public static int findAllBinaryNumbersWithLongestBitSequences(BinaryNumber[] i_binaryNumbers, out BinaryNumber[] o_maxSequenceBinaryNumbers, out int o_amountOfMaxSequenceBinaryNumbers)
         {
-            int maxSequenceLength = 1;
+            int maxSequenceLength = 0;
             int arraySize = i_binaryNumbers.Length;
-            o_maxSequenceBinaryNumber = null;
+            o_amountOfMaxSequenceBinaryNumbers = 0;
+            o_maxSequenceBinaryNumbers = new BinaryNumber[arraySize];
 
             for (int i = 0; i < arraySize; ++i)
             {
-                int tempSequence = 1;
-                int lengthofBinaryNumberString = i_binaryNumbers[i].getLengthofBinaryNumberString();
-                string binaryNumberString = i_binaryNumbers[i].getBinaryNumberString();
-                for (int j = 0; j < lengthofBinaryNumberString - 1; ++j)
+                int tempSequenceLength = i_binaryNumbers[i].findLongestSequenceInBinaryString();
+               
+                if (tempSequenceLength > maxSequenceLength)
                 {
-                    if (binaryNumberString[j] == binaryNumberString[j+1])
-                    {
-                        ++tempSequence;
-                        if (tempSequence > maxSequenceLength)
-                        {
-                            maxSequenceLength = tempSequence;
-                            o_maxSequenceBinaryNumber = i_binaryNumbers[i];
-                        }
-                    }
-                    else
-                    {
-                        tempSequence = 1;
-                    }
+                    maxSequenceLength = tempSequenceLength;
+                    o_amountOfMaxSequenceBinaryNumbers = 0;
+                    o_maxSequenceBinaryNumbers[o_amountOfMaxSequenceBinaryNumbers] = i_binaryNumbers[i];
+                    ++o_amountOfMaxSequenceBinaryNumbers;
+                }
+                else if (tempSequenceLength == maxSequenceLength && maxSequenceLength > 0)
+                {
+                    o_maxSequenceBinaryNumbers[o_amountOfMaxSequenceBinaryNumbers] = i_binaryNumbers[i];
+                    ++o_amountOfMaxSequenceBinaryNumbers;
                 }
             }
 
@@ -99,7 +95,7 @@ namespace Ex01_01
             int arraySize = i_binaryNumbers.Length;
             BinaryNumber mostTransitionsBinaryNumber = null;
 
-            for (int i = 0; i < arraySize; ++i)
+            for (int i = arraySize - 1; i >= 0; --i)
             {
                 int tempTransitionsCounter = 0;
                 int lengthofBinaryNumberString = i_binaryNumbers[i].getLengthofBinaryNumberString();

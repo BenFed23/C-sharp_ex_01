@@ -46,9 +46,19 @@ namespace Ex01_01
             float binaryArrAverage = BinaryStatistics.calculateBinaryArrAverage(arrayOfBinaryNumbersFromUser);
             System.Console.WriteLine($"Average: {binaryArrAverage:F2}");
 
-            BinaryNumber maxSequenceBinaryNumber;
-            int maxSequenceLength = BinaryStatistics.findBinaryArrLongestBitSequence(arrayOfBinaryNumbersFromUser, out maxSequenceBinaryNumber);
-            System.Console.WriteLine($"Longest bit sequence: {maxSequenceLength} ({maxSequenceBinaryNumber.getBinaryNumberString()})");
+            BinaryNumber[] maxSequenceBinaryNumbers;
+            int sizeOfMaxSequenceBinaryNumbers;
+            int maxSequenceLength = BinaryStatistics.findAllBinaryNumbersWithLongestBitSequences(arrayOfBinaryNumbersFromUser, out maxSequenceBinaryNumbers, out sizeOfMaxSequenceBinaryNumbers);
+            System.Console.Write($"Longest bit sequence: {maxSequenceLength} (");
+            for (int i = 0; i < sizeOfMaxSequenceBinaryNumbers; ++i)
+            {
+                System.Console.Write($"{maxSequenceBinaryNumbers[i].getBinaryNumberString()}");
+                if (i != sizeOfMaxSequenceBinaryNumbers - 1)
+                {
+                    System.Console.Write(", ");
+                }
+            }
+            System.Console.WriteLine(")");
 
             int amountOf1Bits = BinaryStatistics.findAmountOf1InBinaryArr(arrayOfBinaryNumbersFromUser);
             System.Console.WriteLine($"Total 1-bits: {amountOf1Bits}");
@@ -60,19 +70,23 @@ namespace Ex01_01
             int divisorNumber = 4;
             int amountOfDivisbleNumbers = 0;
             BinaryNumber[] arrayOfDivisbleNumbers = BinaryStatistics.getAmountOfNumbersDividedBy(arrayOfBinaryNumbersFromUser, divisorNumber, out amountOfDivisbleNumbers);
-            System.Console.Write($"Numbers divisible by {divisorNumber}: {amountOfDivisbleNumbers} (");
+            System.Console.Write($"Numbers divisible by {divisorNumber}: {amountOfDivisbleNumbers} ");
 
-            for (int i = 0; i < amountOfDivisbleNumbers; ++i)
+            if (amountOfDivisbleNumbers != 0)
             {
-                System.Console.Write($"{arrayOfDivisbleNumbers[i].getBinaryNumberString()}");
-                if (i != amountOfDivisbleNumbers - 1)
+                System.Console.Write("(");
+                for (int i = 0; i < amountOfDivisbleNumbers; ++i)
                 {
-                    System.Console.Write(", ");
+                    System.Console.Write($"{arrayOfDivisbleNumbers[i].getBinaryNumberString()}");
+                    if (i != amountOfDivisbleNumbers - 1)
+                    {
+                        System.Console.Write(", ");
+                    }
                 }
+                System.Console.WriteLine(")");
             }
-            System.Console.WriteLine(")");
 
-            System.Console.ReadLine();
+            System.Console.ReadLine(); //delete
         }
     }
 }

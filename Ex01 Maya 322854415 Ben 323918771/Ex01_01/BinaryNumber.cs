@@ -66,6 +66,32 @@ namespace Ex01_01
             return decimalValueOfBinaryString;
         }
 
+        public int findLongestSequenceInBinaryString()
+        {
+            int longestSequenceInBinaryString = 1;
+            int currentLongestSequence = 1;
+            int stringLength = m_BinaryNumberString.Length;
+
+            for (int i = 0; i < stringLength - 1; ++i)
+            {
+                if (m_BinaryNumberString[i] == m_BinaryNumberString[i+1])
+                {
+                    ++currentLongestSequence;
+                }
+                else
+                {
+                    currentLongestSequence = 1;
+                }
+
+                if(currentLongestSequence > longestSequenceInBinaryString)
+                {
+                    longestSequenceInBinaryString = currentLongestSequence;
+                }
+            }
+
+            return longestSequenceInBinaryString;
+        }
+
         public bool isDivisibleBy(int i_divisorNumber)
         {
             if (i_divisorNumber == 0) 
