@@ -128,7 +128,7 @@ namespace Ex01_01
             BinaryNumber[] arrayOfDivisbleNumbers = new BinaryNumber[arraySize];
             int nextIndexForNewArray = 0;
 
-            for (int i = 0; i < arraySize; ++i)
+            for (int i = arraySize - 1; i >= 0; --i)
             {
                 if (i_binaryNumbers[i].isDivisibleBy(i_divisorNumber))
                 {
