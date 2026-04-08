@@ -120,5 +120,25 @@ namespace Ex01_01
 
             return mostTransitionsBinaryNumber;
         }
+
+        public static BinaryNumber[] getAmountOfNumbersDividedBy(BinaryNumber[] i_binaryNumbers, int i_divisorNumber, out int o_amountOfDivisbleNumbers)
+        {
+            int arraySize = i_binaryNumbers.Length;
+            o_amountOfDivisbleNumbers = 0;
+            BinaryNumber[] arrayOfDivisbleNumbers = new BinaryNumber[arraySize];
+            int nextIndexForNewArray = 0;
+
+            for (int i = 0; i < arraySize; ++i)
+            {
+                if (i_binaryNumbers[i].isDivisibleBy(i_divisorNumber))
+                {
+                    ++o_amountOfDivisbleNumbers;
+                    arrayOfDivisbleNumbers[nextIndexForNewArray] = i_binaryNumbers[i];
+                    ++nextIndexForNewArray;
+                }
+            }
+
+            return arrayOfDivisbleNumbers;
+        }
     }
 }

@@ -65,5 +65,16 @@ namespace Ex01_01
             }
             return decimalValueOfBinaryString;
         }
+
+        public bool isDivisibleBy(int i_divisorNumber)
+        {
+            if (i_divisorNumber == 0) 
+            {
+                System.Console.Error.WriteLine("Invalid input. can't be divided by 0");
+                return false; 
+            }
+
+            return ((m_DecimalValueOfBinaryNumber % i_divisorNumber) == 0);
+        }
     }
 }

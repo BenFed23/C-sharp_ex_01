@@ -57,9 +57,22 @@ namespace Ex01_01
             BinaryNumber mostTransitionsBinaryNumber = BinaryStatistics.findmostTransitionsInBinaryNumber(arrayOfBinaryNumbersFromUser, out maxAmountOfTransitions);
             System.Console.WriteLine($"Number with most transitions: {mostTransitionsBinaryNumber.getDecimalValue()} ({mostTransitionsBinaryNumber.getBinaryNumberString()}) - {maxAmountOfTransitions} transitions");
 
+            int divisorNumber = 4;
+            int amountOfDivisbleNumbers = 0;
+            BinaryNumber[] arrayOfDivisbleNumbers = BinaryStatistics.getAmountOfNumbersDividedBy(arrayOfBinaryNumbersFromUser, divisorNumber, out amountOfDivisbleNumbers);
+            System.Console.Write($"Numbers divisible by {divisorNumber}: {amountOfDivisbleNumbers} (");
 
+            for (int i = 0; i < amountOfDivisbleNumbers; ++i)
+            {
+                System.Console.Write($"{arrayOfDivisbleNumbers[i].getBinaryNumberString()}");
+                if (i != amountOfDivisbleNumbers - 1)
+                {
+                    System.Console.Write(", ");
+                }
+            }
+            System.Console.WriteLine(")");
 
-
+            System.Console.ReadLine();
         }
     }
 }
