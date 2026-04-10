@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ex01_02
 {
-    internal class LetterTreeBuilder
+    public class LetterTreeBuilder
     {
         private const char k_StartChar = 'A';
         private const int k_StartRowIndex = 1;
