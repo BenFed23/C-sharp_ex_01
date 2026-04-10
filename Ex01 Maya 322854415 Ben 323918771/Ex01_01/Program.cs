@@ -85,8 +85,6 @@ namespace Ex01_01
                 }
                 System.Console.WriteLine(")");
             }
-
-            System.Console.ReadLine(); //delete
         }
     }
 }
