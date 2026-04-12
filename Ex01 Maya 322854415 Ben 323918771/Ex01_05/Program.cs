@@ -15,14 +15,15 @@ namespace Ex01_05
                 Console.WriteLine("the number is not 9 digits long,try again!");
                 return;
             }
+
             if (!StringChecker.IsAllNumbers(userInput))
             {
                 Console.WriteLine("enter only numbers!");
                 return;
             }
-            Number number=new Number(userInput);
-            string biggerThanUnitNum = "";
-            int count = number.BiggerThanunitsDigit(out string list);
+
+            Number number = new Number(userInput);
+            int count = number.BiggerThanUnitsDigit(out string list);
             string output = string.Format(
             "The units digit is {0}.The digit that are greather than it:{2}. all in all: {1}{5}" +
             "How many digits are divisible by 4? {3}{5}" +
@@ -31,14 +32,12 @@ namespace Ex01_05
             userInput[userInput.Length - 1],
             count,
             list,
-            number.dividedby4(),                 
-            number.getMultMaxandMinNum(),       
+            number.DividedBy4(),                 
+            number.GetMultMaxAndMinNum(),       
             Environment.NewLine,                
-            number.findUnique()                 
+            number.FindUnique()                 
             );
             Console.WriteLine(output);
-
-
         }    
     }
 }

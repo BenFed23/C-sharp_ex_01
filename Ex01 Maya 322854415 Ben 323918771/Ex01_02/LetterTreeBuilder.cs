@@ -12,14 +12,14 @@ namespace Ex01_02
         private const int k_StartRowIndex = 1;
         private const int k_TreeTrunkHeight = 2;
         private const int k_AmountOfLettersInTreeTrunk = 1;
-        public static void printLetterTreeByNumOfLines(int i_numOfLinesInTree)
+        public static void PrintLetterTreeByNumOfLines(int i_numOfLinesInTree)
         {
             int heightWithoutTreeTrunk = i_numOfLinesInTree - k_TreeTrunkHeight;
-            char nextCharForTrunk = printLetterTreeWithoutTreeTrunkRecursive(k_StartRowIndex, heightWithoutTreeTrunk, k_StartChar);
-            printTrunkOfTreeRecursive(k_StartRowIndex, heightWithoutTreeTrunk, nextCharForTrunk);
+            char nextCharForTrunk = PrintLetterTreeWithoutTreeTrunkRecursive(k_StartRowIndex, heightWithoutTreeTrunk, k_StartChar);
+            PrintTrunkOfTreeRecursive(k_StartRowIndex, heightWithoutTreeTrunk, nextCharForTrunk);
         }
 
-        private static char printLetterTreeWithoutTreeTrunkRecursive(int i_currentRowNumber, int i_heightWithoutTreeTrunk, char i_currentCharToPrint)
+        private static char PrintLetterTreeWithoutTreeTrunkRecursive(int i_currentRowNumber, int i_heightWithoutTreeTrunk, char i_currentCharToPrint)
         {
             if (i_currentRowNumber > i_heightWithoutTreeTrunk)
             {
@@ -27,15 +27,14 @@ namespace Ex01_02
             }
 
             System.Console.Write($"{i_currentRowNumber}    ");
-            printCharsRecursive(2*(i_heightWithoutTreeTrunk - i_currentRowNumber), " ");
-            char nextCharToPrint = printLettersRecursive((2 * i_currentRowNumber) - 1, i_currentCharToPrint);
+            PrintCharsRecursive(2*(i_heightWithoutTreeTrunk - i_currentRowNumber), " ");
+            char nextCharToPrint = PrintLettersRecursive((2 * i_currentRowNumber) - 1, i_currentCharToPrint);
             System.Console.WriteLine();
             System.Console.WriteLine();
-
-            return printLetterTreeWithoutTreeTrunkRecursive(i_currentRowNumber + 1, i_heightWithoutTreeTrunk, nextCharToPrint);
+            return PrintLetterTreeWithoutTreeTrunkRecursive(i_currentRowNumber + 1, i_heightWithoutTreeTrunk, nextCharToPrint);
         }
 
-        private static char printLettersRecursive(int i_amountOfLettersInLine, char i_currentCharToPrint)
+        private static char PrintLettersRecursive(int i_amountOfLettersInLine, char i_currentCharToPrint)
         {
             if (i_amountOfLettersInLine <= 0)
             {
@@ -49,7 +48,6 @@ namespace Ex01_02
             }
 
             char nextCharToPrint;
-
             if (i_currentCharToPrint == 'Z')
             {
                 nextCharToPrint = 'A';
@@ -59,11 +57,10 @@ namespace Ex01_02
                 nextCharToPrint = (char)(i_currentCharToPrint + 1);
             }
 
-            return printLettersRecursive(i_amountOfLettersInLine - 1, nextCharToPrint);
-
+            return PrintLettersRecursive(i_amountOfLettersInLine - 1, nextCharToPrint);
         }
 
-        private static void printCharsRecursive(int i_amountOfcharsToPrint, string i_strToPrint)
+        private static void PrintCharsRecursive(int i_amountOfcharsToPrint, string i_strToPrint)
         {
             if (i_amountOfcharsToPrint <= 0)
             {
@@ -71,10 +68,10 @@ namespace Ex01_02
             }
 
             System.Console.Write(i_strToPrint);
-            printCharsRecursive(i_amountOfcharsToPrint - 1, i_strToPrint);
+            PrintCharsRecursive(i_amountOfcharsToPrint - 1, i_strToPrint);
         }
 
-        private static void printTrunkOfTreeRecursive(int i_trunkLineIndex, int i_trunkHeight, char i_currentCharToPrint)
+        private static void PrintTrunkOfTreeRecursive(int i_trunkLineIndex, int i_trunkHeight, char i_currentCharToPrint)
         {
             if (i_trunkLineIndex > k_TreeTrunkHeight)
             {
@@ -83,13 +80,13 @@ namespace Ex01_02
 
             int currentRowNumber = i_trunkHeight + i_trunkLineIndex;
             System.Console.Write($"{currentRowNumber}    ");
-            printCharsRecursive(2*(i_trunkHeight - 1) - 1, " ");
+            PrintCharsRecursive(2*(i_trunkHeight - 1) - 1, " ");
             System.Console.Write("|");
-            printLettersRecursive(k_AmountOfLettersInTreeTrunk, i_currentCharToPrint);
+            PrintLettersRecursive(k_AmountOfLettersInTreeTrunk, i_currentCharToPrint);
             System.Console.Write("|");
             System.Console.WriteLine();
             System.Console.WriteLine();
-            printTrunkOfTreeRecursive(i_trunkLineIndex+1, i_trunkHeight, i_currentCharToPrint);
+            PrintTrunkOfTreeRecursive(i_trunkLineIndex+1, i_trunkHeight, i_currentCharToPrint);
         }
     }
 }

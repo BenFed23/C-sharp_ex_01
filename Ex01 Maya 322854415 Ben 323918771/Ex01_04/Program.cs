@@ -9,40 +9,37 @@ namespace Ex01_04
         public static void Main()
         {
             Console.WriteLine("Enter a 8 cherecters string ");
-            string i_Sentence = Console.ReadLine();
-            if (i_Sentence.Length != 8)
+            string userStringInput = Console.ReadLine();
+            if (userStringInput.Length != 8)
             {
                 Console.WriteLine("The string needs to be 8 characters long, try again!");
                 return;
             }
-            bool strIsPolindrom = StringChecker.IsPolindrom(i_Sentence);
+
+            bool strIsPolindrom = StringChecker.IsPolindrom(userStringInput);
             string analysisResult = "";
-            if (StringChecker.IsAllNumbers(i_Sentence))
+            if (StringChecker.IsAllNumbers(userStringInput))
             {
-                AllNumbers number = new AllNumbers(i_Sentence);
-                bool isDivisibleBy4 = number.IsDivideBy(4);
-                analysisResult = string.Format("The number is divisible by 4: {0}", isDivisibleBy4);
+                AllNumbers number = new AllNumbers(userStringInput);
+                bool IsDivisibleBy4 = number.IsDivideBy(4);
+                analysisResult = string.Format("The number is divisible by 4: {0}", IsDivisibleBy4);
             }
-            else if (StringChecker.IsAllLetters(i_Sentence))
+            else if (StringChecker.IsAllLetters(userStringInput))
             {
-                AllLetters letters = new AllLetters(i_Sentence);
-                int uppersCount = letters.uppercaseCount();
-                bool isDescending = letters.Isdescendingorder();
+                AllLetters letters = new AllLetters(userStringInput);
+                int uppersCount = letters.UppercaseCount();
+                bool isDescending = letters.IsDescendingOrder();
                 analysisResult = string.Format("Uppercase count: {0}\nIs descending series: {1}", uppersCount, isDescending);
             }
+
             string finalOutput = string.Format(
-            
+         
             "Is Palindrome: {0}{2}" +
            "{1}",
             strIsPolindrom,
             analysisResult,
             Environment.NewLine);
             Console.WriteLine(finalOutput);
-
-
-
-
         }
     }
-    
 }

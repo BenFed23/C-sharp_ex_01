@@ -18,26 +18,27 @@ namespace Ex01_05
         {
             return m_RepresentativeStr[i_Index] - '0';
         }
-        public int BiggerThanunitsDigit(out string o_DigitsList) 
+        public int BiggerThanUnitsDigit(out string o_DigitsList) 
         {
             StringBuilder listOfBiggerNums= new StringBuilder(); 
             int biggerThanCount = 0;
             int unitsDigit = m_RepresentativeNum % 10;
             for (int i = 0; i < m_RepresentativeStr.Length; i++)
             {
-                int currentdigit = getDigitAt(i);
-                if (currentdigit > unitsDigit)
+                int currentDigit = getDigitAt(i);
+                if (currentDigit > unitsDigit)
                 {
-                    if (listOfBiggerNums.Length>0) 
+                    if (listOfBiggerNums.Length > 0) 
                     {
                         listOfBiggerNums.Append(",");
                     }
+
                     listOfBiggerNums.Append(m_RepresentativeStr[i]);
                     biggerThanCount++;
                 }
             }
 
-           if(listOfBiggerNums.Length > 0) 
+            if (listOfBiggerNums.Length > 0) 
             {
                 o_DigitsList = listOfBiggerNums.ToString();
             }
@@ -45,31 +46,32 @@ namespace Ex01_05
             {
                 o_DigitsList = "";
             }
-           return biggerThanCount;
+           
+            return biggerThanCount;
         }
-        public int findUnique()
+        public int FindUnique()
         {
            int numOfUnique = 0;
-            for (int i=0;i<m_RepresentativeStr.Length;i++)
+            for (int i=0; i<m_RepresentativeStr.Length; i++)
             {
-                bool allereadycount = false;
+                bool wasAlreadyCounted = false;
                 for (int j = 0; j <i; j++)
                 {
                     if (m_RepresentativeStr[i] == m_RepresentativeStr[j])
                     {
-                       allereadycount = true;
+                        wasAlreadyCounted = true;
                         break; 
                     }
                 }
-                if (!allereadycount)
+                if (!wasAlreadyCounted)
                 {
                     numOfUnique++;
                 }
-
             }
+
             return numOfUnique; 
         }
-        public int getMultMaxandMinNum()
+        public int GetMultMaxAndMinNum()
         {
             int max = getDigitAt(0);
             int min = getDigitAt(0);
@@ -84,22 +86,24 @@ namespace Ex01_05
                 {
                     min = currentDigit;
                 }
-                
             }
+
             return max * min;
         }
-        public int dividedby4() 
+        public int DividedBy4() 
         {
-            int dividedby4Count = 0;
+            int dividedBy4Count = 0;
+
             for (int i = 0; i < m_RepresentativeStr.Length; i++)
             {
                 int currentDig=getDigitAt(i);
-                if (currentDig%4==0) 
+                if (currentDig % 4 == 0) 
                 {
-                    dividedby4Count++;
+                    dividedBy4Count++;
                 }
             }
-            return dividedby4Count;
+
+            return dividedBy4Count;
         }
     }
 }

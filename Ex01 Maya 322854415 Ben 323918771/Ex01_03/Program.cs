@@ -12,20 +12,20 @@ namespace Ex01_03
         public static void Main()
         {
             string userStringInput;
-            int TreeHeightNumber;
-            bool isValidInput;
+            int treeHeightNumber;
+            bool IsValidInput;
 
             System.Console.WriteLine("Please enter a tree height (number between 4 - 15)");
             userStringInput = System.Console.ReadLine();
-            isValidInput = int.TryParse(userStringInput, out TreeHeightNumber) && (TreeHeightNumber <= 15 && TreeHeightNumber >= 4);
-            while (!isValidInput) { 
+            IsValidInput = int.TryParse(userStringInput, out treeHeightNumber) && (treeHeightNumber <= 15 && treeHeightNumber >= 4);
+            while (!IsValidInput) { 
                 Console.WriteLine("Invalid input, please enter a valid number between 4 and 15");
                 userStringInput = System.Console.ReadLine();
-                isValidInput = int.TryParse(userStringInput, out TreeHeightNumber) && (TreeHeightNumber <= 15 && TreeHeightNumber >= 4);
+                IsValidInput = int.TryParse(userStringInput, out treeHeightNumber) && (treeHeightNumber <= 15 && treeHeightNumber >= 4);
             }
 
             Console.WriteLine();
-            LetterTreeBuilder.printLetterTreeByNumOfLines(TreeHeightNumber);
+            LetterTreeBuilder.PrintLetterTreeByNumOfLines(treeHeightNumber);
         }
     }
 }

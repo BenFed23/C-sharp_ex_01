@@ -14,30 +14,31 @@ namespace Ex01_01
         public BinaryNumber(string i_BinaryNumberStringFromUser)
         {
             m_BinaryNumberString = i_BinaryNumberStringFromUser;
-            m_DecimalValueOfBinaryNumber = convertBinaryStringToDecimal(i_BinaryNumberStringFromUser);
+            m_DecimalValueOfBinaryNumber = ConvertBinaryStringToDecimal(i_BinaryNumberStringFromUser);
         }
 
-        public int getDecimalValue()
+        public int GetDecimalValue()
         {
             return m_DecimalValueOfBinaryNumber;
         }
 
-        public string getBinaryNumberString()
+        public string GetBinaryNumberString()
         {
             return m_BinaryNumberString;
         }
 
-        public int getLengthofBinaryNumberString()
+        public int GetLengthOfBinaryNumberString()
         {
             return m_BinaryNumberString.Length;
         }
 
-        public static bool isValid(string i_BinaryNumberStringFromUser, int i_RequestedLengthOfBinaryNumber)
+        public static bool IsValid(string i_BinaryNumberStringFromUser, int i_RequestedLengthOfBinaryNumber)
         {
+            bool isValid = true;
             if (i_BinaryNumberStringFromUser.Length < i_RequestedLengthOfBinaryNumber)
             {
-                System.Console.Error.WriteLine($"Invalid input size. Please enter a {i_RequestedLengthOfBinaryNumber} digit binary number");
-                return false;
+                System.Console.Error.WriteLine($"Invalid input size. Please enter a {0} digit binary number", i_RequestedLengthOfBinaryNumber);
+                isValid = false;
             }
 
             for (int i = 0; i < i_RequestedLengthOfBinaryNumber; ++i)
@@ -45,17 +46,18 @@ namespace Ex01_01
                 if (i_BinaryNumberStringFromUser[i] != '0' && i_BinaryNumberStringFromUser[i] != '1')
                 {
                     System.Console.Error.WriteLine("Invalid input character. Please enter only 0 or 1");
-                    return false;
+                    isValid = false;
                 }
             }
 
-            return true;
+            return isValid;
         }
 
-        public static int convertBinaryStringToDecimal(string i_BinaryNumberStringFromUser)
+        public static int ConvertBinaryStringToDecimal(string i_BinaryNumberStringFromUser)
         {
             int decimalValueOfBinaryString = 0;
             int binaryStringLength = i_BinaryNumberStringFromUser.Length;
+
             for (int i = 0; i < binaryStringLength; ++i)
             {
                 if (i_BinaryNumberStringFromUser[i] == '1')
@@ -63,10 +65,11 @@ namespace Ex01_01
                     decimalValueOfBinaryString += (int)Math.Pow(2, binaryStringLength - (i + 1));
                 }
             }
+            
             return decimalValueOfBinaryString;
         }
 
-        public int findLongestSequenceInBinaryString()
+        public int FindLongestSequenceInBinaryString()
         {
             int longestSequenceInBinaryString = 1;
             int currentLongestSequence = 1;
@@ -92,15 +95,20 @@ namespace Ex01_01
             return longestSequenceInBinaryString;
         }
 
-        public bool isDivisibleBy(int i_divisorNumber)
+        public bool IsDivisibleBy(int i_divisorNumber)
         {
+            bool isDivisible = true;
             if (i_divisorNumber == 0) 
             {
                 System.Console.Error.WriteLine("Invalid input. can't be divided by 0");
-                return false; 
+                isDivisible = false; 
+            }
+            else
+            {
+                isDivisible = ((m_DecimalValueOfBinaryNumber % i_divisorNumber) == 0);
             }
 
-            return ((m_DecimalValueOfBinaryNumber % i_divisorNumber) == 0);
+            return isDivisible;
         }
     }
 }

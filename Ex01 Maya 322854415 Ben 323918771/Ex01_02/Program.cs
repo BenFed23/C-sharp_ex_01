@@ -8,10 +8,10 @@ namespace Ex01_02
 {
     internal class Program
     {
-        private const int BeginnerLetterTreeRowCount = 7;
+        private const int k_BeginnerLetterTreeRowCount = 7;
         public static void Main()
         {
-            LetterTreeBuilder.printLetterTreeByNumOfLines(BeginnerLetterTreeRowCount);
+            LetterTreeBuilder.PrintLetterTreeByNumOfLines(k_BeginnerLetterTreeRowCount);
         }
     }
 }
