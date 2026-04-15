@@ -16,7 +16,7 @@ namespace Ex01_04
                 return;
             }
 
-            bool strIsPolindrom = StringChecker.IsPolindrom(userStringInput);
+            bool strIsPalindrom = StringChecker.IsPalindrom(userStringInput);
             string analysisResult = "";
             if (StringChecker.IsAllNumbers(userStringInput))
             {
@@ -36,7 +36,7 @@ namespace Ex01_04
          
             "Is Palindrome: {0}{2}" +
            "{1}",
-            strIsPolindrom,
+            strIsPalindrom,
             analysisResult,
             Environment.NewLine);
             Console.WriteLine(finalOutput);

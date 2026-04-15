@@ -29,10 +29,10 @@ namespace Ex01_01
             }
 
             BinaryStatistics.SortBinaryArrInDescendingOrder(arrayOfBinaryNumbersFromUser);
-            System.Console.Write($"Decimal numbers in descending order: ");
+            System.Console.Write("Decimal numbers in descending order: ");
             for (int i = 0; i < k_AmountOfBinaryNumbers; ++i)
             {
-                System.Console.Write($"{arrayOfBinaryNumbersFromUser[i].GetDecimalValue()} ({arrayOfBinaryNumbersFromUser[i].GetBinaryNumberString()})");
+                System.Console.Write("{0)} ({1})", arrayOfBinaryNumbersFromUser[i].GetDecimalValue(), arrayOfBinaryNumbersFromUser[i].GetBinaryNumberString());
                 if (i != k_AmountOfBinaryNumbers - 1)
                 {
                     System.Console.Write(", ");
@@ -41,14 +41,14 @@ namespace Ex01_01
             
             System.Console.WriteLine();
             float binaryArrAverage = BinaryStatistics.CalculateBinaryArrAverage(arrayOfBinaryNumbersFromUser);
-            System.Console.WriteLine($"Average: {binaryArrAverage:F2}");
+            System.Console.WriteLine("Average: {0}", Math.Round(binaryArrAverage, 2)); //we didnt learn- but he said we can use math!
             BinaryNumber[] maxSequenceBinaryNumbers;
             int sizeOfMaxSequenceBinaryNumbers;
             int maxSequenceLength = BinaryStatistics.FindAllBinaryNumbersWithLongestBitSequences(arrayOfBinaryNumbersFromUser, out maxSequenceBinaryNumbers, out sizeOfMaxSequenceBinaryNumbers);
-            System.Console.Write($"Longest bit sequence: {0} (", maxSequenceLength);
+            System.Console.Write("Longest bit sequence: {0} (", maxSequenceLength);
             for (int i = 0; i < sizeOfMaxSequenceBinaryNumbers; ++i)
             {
-                System.Console.Write($"{maxSequenceBinaryNumbers[i].GetBinaryNumberString()}");
+                System.Console.Write("{0}", maxSequenceBinaryNumbers[i].GetBinaryNumberString());
                 if (i != sizeOfMaxSequenceBinaryNumbers - 1)
                 {
                     System.Console.Write(", ");
@@ -57,20 +57,20 @@ namespace Ex01_01
 
             System.Console.WriteLine(")");
             int amountOf1Bits = BinaryStatistics.FindAmountOf1InBinaryArr(arrayOfBinaryNumbersFromUser);
-            System.Console.WriteLine($"Total 1-bits: {0}", amountOf1Bits);
+            System.Console.WriteLine("Total 1-bits: {0}", amountOf1Bits);
             int maxAmountOfTransitions;
             BinaryNumber mostTransitionsBinaryNumber = BinaryStatistics.FindmostTransitionsInBinaryNumber(arrayOfBinaryNumbersFromUser, out maxAmountOfTransitions);
-            System.Console.WriteLine($"Number with most transitions: {0} ({1}) - {2} transitions", mostTransitionsBinaryNumber.GetDecimalValue(), mostTransitionsBinaryNumber.GetBinaryNumberString(), maxAmountOfTransitions);
+            System.Console.WriteLine("Number with most transitions: {0} ({1}) - {2} transitions", mostTransitionsBinaryNumber.GetDecimalValue(), mostTransitionsBinaryNumber.GetBinaryNumberString(), maxAmountOfTransitions);
             int divisorNumber = 4;
             int amountOfDivisbleNumbers = 0;
             BinaryNumber[] arrayOfDivisbleNumbers = BinaryStatistics.GetAmountOfNumbersDividedBy(arrayOfBinaryNumbersFromUser, divisorNumber, out amountOfDivisbleNumbers);
-            System.Console.Write($"Numbers divisible by {0}: {1} ", divisorNumber, amountOfDivisbleNumbers);
+            System.Console.Write("Numbers divisible by {0}: {1} ", divisorNumber, amountOfDivisbleNumbers);
             if (amountOfDivisbleNumbers != 0)
             {
                 System.Console.Write("(");
                 for (int i = 0; i < amountOfDivisbleNumbers; ++i)
                 {
-                    System.Console.Write($"{arrayOfDivisbleNumbers[i].GetBinaryNumberString()}");
+                    System.Console.Write("{0}", arrayOfDivisbleNumbers[i].GetBinaryNumberString());
                     if (i != amountOfDivisbleNumbers - 1)
                     {
                         System.Console.Write(", ");

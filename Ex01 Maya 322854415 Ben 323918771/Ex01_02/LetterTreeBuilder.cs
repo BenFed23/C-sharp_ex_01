@@ -26,7 +26,7 @@ namespace Ex01_02
                 return i_currentCharToPrint;
             }
 
-            System.Console.Write($"{i_currentRowNumber}    ");
+            System.Console.Write("{0}    ", i_currentRowNumber);
             PrintCharsRecursive(2*(i_heightWithoutTreeTrunk - i_currentRowNumber), " ");
             char nextCharToPrint = PrintLettersRecursive((2 * i_currentRowNumber) - 1, i_currentCharToPrint);
             System.Console.WriteLine();
@@ -79,7 +79,7 @@ namespace Ex01_02
             }
 
             int currentRowNumber = i_trunkHeight + i_trunkLineIndex;
-            System.Console.Write($"{currentRowNumber}    ");
+            System.Console.Write("{0}    ", currentRowNumber);
             PrintCharsRecursive(2*(i_trunkHeight - 1) - 1, " ");
             System.Console.Write("|");
             PrintLettersRecursive(k_AmountOfLettersInTreeTrunk, i_currentCharToPrint);

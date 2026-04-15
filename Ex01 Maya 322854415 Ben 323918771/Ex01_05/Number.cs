@@ -23,6 +23,7 @@ namespace Ex01_05
             StringBuilder listOfBiggerNums= new StringBuilder(); 
             int biggerThanCount = 0;
             int unitsDigit = m_RepresentativeNum % 10;
+
             for (int i = 0; i < m_RepresentativeStr.Length; i++)
             {
                 int currentDigit = getDigitAt(i);
@@ -51,7 +52,8 @@ namespace Ex01_05
         }
         public int FindUnique()
         {
-           int numOfUnique = 0;
+            int numOfUnique = 0;
+
             for (int i=0; i<m_RepresentativeStr.Length; i++)
             {
                 bool wasAlreadyCounted = false;
@@ -75,6 +77,7 @@ namespace Ex01_05
         {
             int max = getDigitAt(0);
             int min = getDigitAt(0);
+
             for (int i = 0; i < m_RepresentativeStr.Length; i++)
             {
                 int currentDigit = getDigitAt(i);
@@ -96,7 +99,7 @@ namespace Ex01_05
 
             for (int i = 0; i < m_RepresentativeStr.Length; i++)
             {
-                int currentDig=getDigitAt(i);
+                int currentDig = getDigitAt(i);
                 if (currentDig % 4 == 0) 
                 {
                     dividedBy4Count++;

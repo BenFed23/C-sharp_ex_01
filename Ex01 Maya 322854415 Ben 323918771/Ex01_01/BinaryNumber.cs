@@ -35,9 +35,10 @@ namespace Ex01_01
         public static bool IsValid(string i_BinaryNumberStringFromUser, int i_RequestedLengthOfBinaryNumber)
         {
             bool isValid = true;
+
             if (i_BinaryNumberStringFromUser.Length < i_RequestedLengthOfBinaryNumber)
             {
-                System.Console.Error.WriteLine($"Invalid input size. Please enter a {0} digit binary number", i_RequestedLengthOfBinaryNumber);
+                System.Console.WriteLine($"Invalid input size. Please enter a {0} digit binary number", i_RequestedLengthOfBinaryNumber);
                 isValid = false;
             }
 
@@ -45,7 +46,7 @@ namespace Ex01_01
             {
                 if (i_BinaryNumberStringFromUser[i] != '0' && i_BinaryNumberStringFromUser[i] != '1')
                 {
-                    System.Console.Error.WriteLine("Invalid input character. Please enter only 0 or 1");
+                    System.Console.WriteLine("Invalid input character. Please enter only 0 or 1");
                     isValid = false;
                 }
             }
@@ -98,9 +99,10 @@ namespace Ex01_01
         public bool IsDivisibleBy(int i_divisorNumber)
         {
             bool isDivisible = true;
+
             if (i_divisorNumber == 0) 
             {
-                System.Console.Error.WriteLine("Invalid input. can't be divided by 0");
+                System.Console.WriteLine("Invalid input. can't be divided by 0");
                 isDivisible = false; 
             }
             else

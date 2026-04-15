@@ -24,25 +24,25 @@ namespace Ex01_04
 
             return isAllLetters;
         }
-        public static bool IsPolindrom(string i_InputStr)
+        public static bool IsPalindrom(string i_InputStr)
         {
-            bool isPolindrom = true;
+            bool isPalindrom = true;
 
             if (i_InputStr.Length <= 1)
             {
-                isPolindrom = true;
+                isPalindrom = true;
             }
             else if (i_InputStr[0] != i_InputStr[i_InputStr.Length - 1])
             {
-                isPolindrom = false;
+                isPalindrom = false;
             }
             else
             {
                 string smallerStr = i_InputStr.Substring(1, i_InputStr.Length - 2);
-                isPolindrom = IsPolindrom(smallerStr);
+                isPalindrom = IsPalindrom(smallerStr);
             }
 
-            return isPolindrom;
+            return isPalindrom;
         }
     }
 }
