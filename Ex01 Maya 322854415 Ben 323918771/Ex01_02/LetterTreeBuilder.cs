@@ -15,36 +15,38 @@ namespace Ex01_02
         public static void PrintLetterTreeByNumOfLines(int i_numOfLinesInTree)
         {
             int heightWithoutTreeTrunk = i_numOfLinesInTree - k_TreeTrunkHeight;
-            char nextCharForTrunk = PrintLetterTreeWithoutTreeTrunkRecursive(k_StartRowIndex, heightWithoutTreeTrunk, k_StartChar);
+            char nextCharForTrunk = BuilderLetterTreeWithoutTreeTrunkRecursive(k_StartRowIndex, heightWithoutTreeTrunk, k_StartChar);
             PrintTrunkOfTreeRecursive(k_StartRowIndex, heightWithoutTreeTrunk, nextCharForTrunk);
         }
 
-        private static char PrintLetterTreeWithoutTreeTrunkRecursive(int i_currentRowNumber, int i_heightWithoutTreeTrunk, char i_currentCharToPrint)
+        private static char BuilderLetterTreeWithoutTreeTrunkRecursive(int i_currentRowNumber, int i_heightWithoutTreeTrunk, char i_currentCharToPrint)
         {
             if (i_currentRowNumber > i_heightWithoutTreeTrunk)
             {
                 return i_currentCharToPrint;
             }
 
-            System.Console.Write("{0}    ", i_currentRowNumber);
-            PrintCharsRecursive(2*(i_heightWithoutTreeTrunk - i_currentRowNumber), " ");
-            char nextCharToPrint = PrintLettersRecursive((2 * i_currentRowNumber) - 1, i_currentCharToPrint);
+            StringBuilder lineBuilder = new StringBuilder();
+            lineBuilder.Append(string.Format("{0}    ", i_currentRowNumber));
+            AppendCharsRecursive(2*(i_heightWithoutTreeTrunk - i_currentRowNumber), " ", lineBuilder);
+            char nextCharToPrint = BuildLettersRecursive((2 * i_currentRowNumber) - 1, i_currentCharToPrint, lineBuilder);
+            System.Console.WriteLine(lineBuilder.ToString());
             System.Console.WriteLine();
-            System.Console.WriteLine();
-            return PrintLetterTreeWithoutTreeTrunkRecursive(i_currentRowNumber + 1, i_heightWithoutTreeTrunk, nextCharToPrint);
+
+            return BuilderLetterTreeWithoutTreeTrunkRecursive(i_currentRowNumber + 1, i_heightWithoutTreeTrunk, nextCharToPrint);
         }
 
-        private static char PrintLettersRecursive(int i_amountOfLettersInLine, char i_currentCharToPrint)
+        private static char BuildLettersRecursive(int i_amountOfLettersInLine, char i_currentCharToPrint, StringBuilder i_LineBuilder)
         {
             if (i_amountOfLettersInLine <= 0)
             {
                 return i_currentCharToPrint;
             }
 
-            System.Console.Write(i_currentCharToPrint);
-            if(i_amountOfLettersInLine > 1)
+            i_LineBuilder.Append(i_currentCharToPrint);
+            if (i_amountOfLettersInLine > 1)
             {
-                System.Console.Write(" ");
+                i_LineBuilder.Append(" ");
             }
 
             char nextCharToPrint;
@@ -57,18 +59,18 @@ namespace Ex01_02
                 nextCharToPrint = (char)(i_currentCharToPrint + 1);
             }
 
-            return PrintLettersRecursive(i_amountOfLettersInLine - 1, nextCharToPrint);
+            return BuildLettersRecursive(i_amountOfLettersInLine - 1, nextCharToPrint, i_LineBuilder);
         }
 
-        private static void PrintCharsRecursive(int i_amountOfcharsToPrint, string i_strToPrint)
+        private static void AppendCharsRecursive(int i_amountOfcharsToPrint, string i_strToPrint, StringBuilder i_charStringBuilder)
         {
             if (i_amountOfcharsToPrint <= 0)
             {
                 return;
             }
 
-            System.Console.Write(i_strToPrint);
-            PrintCharsRecursive(i_amountOfcharsToPrint - 1, i_strToPrint);
+            i_charStringBuilder.Append(i_strToPrint);
+            AppendCharsRecursive(i_amountOfcharsToPrint - 1, i_strToPrint, i_charStringBuilder);
         }
 
         private static void PrintTrunkOfTreeRecursive(int i_trunkLineIndex, int i_trunkHeight, char i_currentCharToPrint)
@@ -79,12 +81,13 @@ namespace Ex01_02
             }
 
             int currentRowNumber = i_trunkHeight + i_trunkLineIndex;
-            System.Console.Write("{0}    ", currentRowNumber);
-            PrintCharsRecursive(2*(i_trunkHeight - 1) - 1, " ");
-            System.Console.Write("|");
-            PrintLettersRecursive(k_AmountOfLettersInTreeTrunk, i_currentCharToPrint);
-            System.Console.Write("|");
-            System.Console.WriteLine();
+            StringBuilder trunkBuilder = new StringBuilder();
+            trunkBuilder.Append(string.Format("{0}    ", currentRowNumber));
+            AppendCharsRecursive(2*(i_trunkHeight - 1) - 1, " ", trunkBuilder);
+            trunkBuilder.Append("|");
+            trunkBuilder.Append(i_currentCharToPrint);
+            trunkBuilder.Append("|");
+            System.Console.WriteLine(trunkBuilder.ToString());
             System.Console.WriteLine();
             PrintTrunkOfTreeRecursive(i_trunkLineIndex+1, i_trunkHeight, i_currentCharToPrint);
         }
