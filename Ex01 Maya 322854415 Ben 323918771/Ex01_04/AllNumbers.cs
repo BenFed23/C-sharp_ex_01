@@ -13,10 +13,8 @@ namespace Ex01_04
         public bool IsDivideBy(int i_dividerNum)
         {
             bool isDivideBy = true;
-            if (m_RepresentativeNum % i_dividerNum != 0)
-            {
-                isDivideBy = false;
-            }
+            isDivideBy = m_RepresentativeNum % i_dividerNum != 0;
+           
             return isDivideBy;
         }  
     }

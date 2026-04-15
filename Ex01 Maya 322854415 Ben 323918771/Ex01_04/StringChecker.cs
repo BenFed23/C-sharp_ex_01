@@ -7,6 +7,7 @@ namespace Ex01_04
         public static bool IsAllNumbers(string i_InputStr)
         {
             bool isAllNumbers = true;
+
             for(int i=0; i < i_InputStr.Length; i++) 
             {
                 isAllNumbers = !char.IsDigit(i_InputStr[i]);   
@@ -17,6 +18,7 @@ namespace Ex01_04
         public static bool IsAllLetters(string i_InputStr)
         {
             bool isAllLetters = true;
+
             for (int i = 0; i < i_InputStr.Length; i++)
             {
                 isAllLetters = !char.IsLetter(i_InputStr[i]);

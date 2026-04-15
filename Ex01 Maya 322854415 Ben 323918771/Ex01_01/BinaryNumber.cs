@@ -38,7 +38,7 @@ namespace Ex01_01
 
             if (i_BinaryNumberStringFromUser.Length < i_RequestedLengthOfBinaryNumber)
             {
-                System.Console.WriteLine($"Invalid input size. Please enter a {0} digit binary number", i_RequestedLengthOfBinaryNumber);
+                System.Console.WriteLine("Invalid input size. Please enter a {0} digit binary number", i_RequestedLengthOfBinaryNumber);
                 isValid = false;
             }
 

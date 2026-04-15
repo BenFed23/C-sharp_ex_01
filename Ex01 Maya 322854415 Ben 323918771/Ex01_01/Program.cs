@@ -32,7 +32,7 @@ namespace Ex01_01
             System.Console.Write("Decimal numbers in descending order: ");
             for (int i = 0; i < k_AmountOfBinaryNumbers; ++i)
             {
-                System.Console.Write("{0)} ({1})", arrayOfBinaryNumbersFromUser[i].GetDecimalValue(), arrayOfBinaryNumbersFromUser[i].GetBinaryNumberString());
+                System.Console.Write("{0} ({1})", arrayOfBinaryNumbersFromUser[i].GetDecimalValue(), arrayOfBinaryNumbersFromUser[i].GetBinaryNumberString());
                 if (i != k_AmountOfBinaryNumbers - 1)
                 {
                     System.Console.Write(", ");
