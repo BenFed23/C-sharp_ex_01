@@ -25,7 +25,7 @@ namespace Ex01_05
             Number number = new Number(userInput);
             int count = number.BiggerThanUnitsDigit(out string list);
             string output = string.Format(
-            "The units digit is {0}.The digit that are greather than it:{2}. all in all: {1}{5}" +
+            "The units digit is {0}.The digit that are greater than it:{2}. all in all: {1}{5}" +
             "How many digits are divisible by 4? {3}{5}" +
             "The multiplication of the largest and smallest digit: {4}{5}" +
             "How many unique digits: {6}",
