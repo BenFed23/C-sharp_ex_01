@@ -8,7 +8,7 @@ namespace Ex01_04
     {
         public static void Main()
         {
-            Console.WriteLine("Enter a 8 cherecters string ");
+            Console.WriteLine("Enter an 8-characters string");
             string userStringInput = Console.ReadLine();
             if (userStringInput.Length != 8)
             {
