@@ -15,6 +15,7 @@ namespace Ex01_04
                 Console.WriteLine("The string needs to be 8 characters long, try again!");
                 return;
             }
+
             bool strIsPalindrome = IsPalindrome(userStringInput);
             string analysisResult = "";
             if (IsAllNumbers(userStringInput))
@@ -25,7 +26,7 @@ namespace Ex01_04
             }
             else if (IsAllLetters(userStringInput))
             {
-
+               
                 int uppersCount = UppercaseCount(userStringInput);
                 bool isDescending = Isdescendingorder(userStringInput);
                 analysisResult = string.Format("Uppercase count: {0}\nIs descending series: {1}", uppersCount, isDescending);
@@ -38,11 +39,8 @@ namespace Ex01_04
             analysisResult,
             Environment.NewLine);
             Console.WriteLine(finalOutput);
-
-
-
-
         }
+
         public static bool IsAllNumbers(string i_InputStr)
         {
             bool isAllNunbers = true; ;
