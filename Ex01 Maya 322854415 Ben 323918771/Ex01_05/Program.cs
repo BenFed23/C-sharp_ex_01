@@ -7,7 +7,7 @@ namespace Ex01_05
     {
         public static void Main()
         {
-            Console.WriteLine("Enter a 9 digit number!");
+            Console.WriteLine("Enter a 9 digit number");
             string userInput = Console.ReadLine();
             if (userInput == null || (userInput.Length != 9)) 
             {
