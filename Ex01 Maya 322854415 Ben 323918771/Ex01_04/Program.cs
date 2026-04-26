@@ -8,30 +8,30 @@ namespace Ex01_04
     {
         public static void Main()
         {
-            Console.WriteLine("Enter a 8 cherecters string ");
-            string sentence = Console.ReadLine();
-            if (sentence.Length != 8)
+            Console.WriteLine("Enter an 8-characters string");
+            string userStringInput = Console.ReadLine();
+            if (userStringInput.Length != 8)
             {
                 Console.WriteLine("The string needs to be 8 characters long, try again!");
                 return;
             }
-            bool strIsPalindrome = IsPalindrome(sentence);
+            bool strIsPalindrome = IsPalindrome(userStringInput);
             string analysisResult = "";
-            if (IsAllNumbers(sentence))
+            if (IsAllNumbers(userStringInput))
             {
-                int.TryParse(sentence, out int RepresentativeNum);
+                int.TryParse(userStringInput, out int RepresentativeNum);
                 bool isDivisibleBy4 = IsDivideBy(4, RepresentativeNum);
                 analysisResult = string.Format("The number is divisible by 4: {0}", isDivisibleBy4);
             }
-            else if (IsAllLetters(sentence))
+            else if (IsAllLetters(userStringInput))
             {
-               
-                int uppersCount = UppercaseCount(sentence);
-                bool isDescending = Isdescendingorder(sentence);
+
+                int uppersCount = UppercaseCount(userStringInput);
+                bool isDescending = Isdescendingorder(userStringInput);
                 analysisResult = string.Format("Uppercase count: {0}\nIs descending series: {1}", uppersCount, isDescending);
             }
-            string finalOutput = string.Format(
 
+            string finalOutput = string.Format(
             "Is Palindrome: {0}{2}" +
            "{1}",
             strIsPalindrome,
@@ -136,5 +136,4 @@ namespace Ex01_04
         
 
     }
-    
 }

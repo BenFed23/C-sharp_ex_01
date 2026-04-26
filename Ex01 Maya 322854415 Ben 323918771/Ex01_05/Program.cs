@@ -23,7 +23,7 @@ namespace Ex01_05
             
             int count = BiggerThanUnitsDigit(out string list,userInput);
             string output = string.Format(
-            "The units digit is {0}.The digit that are greater than it:{2}. toal: {1}{5}" +
+            "The units digit is {0}.The digit that are greater than it:{2}. total: {1}{5}" +
             "How many digits are divisible by 4? {3}{5}" +
             "The multiplication of the largest and smallest digit: {4}{5}" +
             "How many unique digits: {6}",
