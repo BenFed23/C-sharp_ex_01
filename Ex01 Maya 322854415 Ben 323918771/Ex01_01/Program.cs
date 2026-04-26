@@ -10,7 +10,7 @@ namespace Ex01_01
     {
         private const int k_AmountOfBinaryNumbers = 4;
         private const int k_LengthOfBinaryNumbers = 7;
-        private const int k_divisorNumber = 4;
+        private const int k_DivisorNumber = 4;
 
         public static void Main()
         {
@@ -20,7 +20,7 @@ namespace Ex01_01
             string forthBinaryNumberFromUser;
 
             System.Console.WriteLine("Please insert 4 binary numbers containing 7 bits");
-            getInputStringsFromUser(out firstBinaryNumberFromUser, out secondBinaryNumberFromUser, out thirdBinaryNumberFromUser, out forthBinaryNumberFromUser);
+            GetInputStringsFromUser(out firstBinaryNumberFromUser, out secondBinaryNumberFromUser, out thirdBinaryNumberFromUser, out forthBinaryNumberFromUser);
             PrintBinaryNumbersInDescendingOrder(ref firstBinaryNumberFromUser, ref secondBinaryNumberFromUser, ref thirdBinaryNumberFromUser, ref forthBinaryNumberFromUser);
             CalculateAndPrintBinaryNumbersAverage(firstBinaryNumberFromUser, secondBinaryNumberFromUser, thirdBinaryNumberFromUser, forthBinaryNumberFromUser);
             FindAllBinaryNumbersWithLongestBitSequences(firstBinaryNumberFromUser, secondBinaryNumberFromUser, thirdBinaryNumberFromUser, forthBinaryNumberFromUser);
@@ -29,30 +29,32 @@ namespace Ex01_01
             PrintAmountOfNumbersDividedBy(firstBinaryNumberFromUser, secondBinaryNumberFromUser, thirdBinaryNumberFromUser, forthBinaryNumberFromUser);
         }
 
-        public static void getInputStringsFromUser(out string o_FirstBinaryNumberFromUser, out string o_SecondBinaryNumberFromUser, out string o_ThirdBinaryNumberFromUser, out string o_ForthBinaryNumberFromUser)
+        public static void GetInputStringsFromUser(out string o_FirstBinaryNumberFromUser, out string o_SecondBinaryNumberFromUser, 
+            out string o_ThirdBinaryNumberFromUser, out string o_ForthBinaryNumberFromUser)
         {
             o_FirstBinaryNumberFromUser = string.Empty;
             o_SecondBinaryNumberFromUser = string.Empty;
             o_ThirdBinaryNumberFromUser = string.Empty;
             o_ForthBinaryNumberFromUser = string.Empty;
-            for (int i = 0; i < k_AmountOfBinaryNumbers; ++i)
+
+            for(int i = 0; i < k_AmountOfBinaryNumbers; ++i) 
             {
-                string input = System.Console.ReadLine();
-                if (IsValid(input, k_LengthOfBinaryNumbers))
+                string userInputString = System.Console.ReadLine();
+                if(IsValid(userInputString, k_LengthOfBinaryNumbers))
                 {
-                    switch (i)
+                    switch(i)
                     {
                         case 0:
-                            o_FirstBinaryNumberFromUser = input;
+                            o_FirstBinaryNumberFromUser = userInputString;
                             break;
                         case 1:
-                            o_SecondBinaryNumberFromUser = input;
+                            o_SecondBinaryNumberFromUser = userInputString;
                             break;
                         case 2:
-                            o_ThirdBinaryNumberFromUser = input;
+                            o_ThirdBinaryNumberFromUser = userInputString;
                             break;
                         case 3:
-                            o_ForthBinaryNumberFromUser = input;
+                            o_ForthBinaryNumberFromUser = userInputString;
                             break;
                     }
                 }
@@ -67,15 +69,15 @@ namespace Ex01_01
         {
             bool isValid = true;
 
-            if (i_BinaryNumberStringFromUser.Length != i_RequestedLengthOfBinaryNumber)
+            if(i_BinaryNumberStringFromUser.Length != i_RequestedLengthOfBinaryNumber)
             {
                 System.Console.WriteLine("Invalid input size. Please enter a {0} digit binary number", i_RequestedLengthOfBinaryNumber);
                 isValid = false;
             }
 
-            for (int i = 0; i < i_RequestedLengthOfBinaryNumber && isValid; ++i)
+            for(int i = 0; i < i_RequestedLengthOfBinaryNumber && isValid; ++i)
             {
-                if (i_BinaryNumberStringFromUser[i] != '0' && i_BinaryNumberStringFromUser[i] != '1')
+                if(i_BinaryNumberStringFromUser[i] != '0' && i_BinaryNumberStringFromUser[i] != '1')
                 {
                     System.Console.WriteLine("Invalid input character. Please enter only 0 or 1");
                     isValid = false;
@@ -85,7 +87,8 @@ namespace Ex01_01
             return isValid;
         }
 
-        public static void PrintBinaryNumbersInDescendingOrder(ref string io_FirstBinaryNumber, ref string io_SecondBinaryNumber, ref string io_ThirdBinaryNumber, ref string io_ForthBinaryNumber)
+        public static void PrintBinaryNumbersInDescendingOrder(ref string io_FirstBinaryNumber, ref string io_SecondBinaryNumber, 
+            ref string io_ThirdBinaryNumber, ref string io_ForthBinaryNumber)
         {
             swapIfSmaller(ref io_FirstBinaryNumber, ref io_SecondBinaryNumber);
             swapIfSmaller(ref io_ThirdBinaryNumber, ref io_ForthBinaryNumber);
@@ -99,11 +102,13 @@ namespace Ex01_01
             printSingleBinaryInfo(io_ForthBinaryNumber, true);
             System.Console.WriteLine();
         }
+
         private static void printSingleBinaryInfo(string i_BinaryStringToPrint, bool i_IsLastString)
         {
-            int decimalValueOfString = Convert.ToInt32(i_BinaryStringToPrint, 2);
+            int decimalValueOfString = ConvertBinaryStringToDecimal(i_BinaryStringToPrint);
+
             System.Console.Write("{0} ({1})", decimalValueOfString, i_BinaryStringToPrint);
-            if (!i_IsLastString)
+            if(!i_IsLastString)
             {
                 System.Console.Write(", ");
             }
@@ -127,9 +132,9 @@ namespace Ex01_01
             int decimalValueOfBinaryString = 0;
             int binaryStringLength = i_BinaryNumberStringFromUser.Length;
 
-            for (int i = 0; i < binaryStringLength; ++i)
+            for(int i = 0; i < binaryStringLength; ++i)
             {
-                if (i_BinaryNumberStringFromUser[i] == '1')
+                if(i_BinaryNumberStringFromUser[i] == '1')
                 {
                     decimalValueOfBinaryString += (int)Math.Pow(2, binaryStringLength - (i + 1));
                 }
@@ -138,7 +143,8 @@ namespace Ex01_01
             return decimalValueOfBinaryString;
         }
 
-        public static void CalculateAndPrintBinaryNumbersAverage(string i_FirstBinaryNumberString, string i_SecondBinaryNumberString, string i_ThirdBinaryNumberString, string i_ForthBinaryNumberString)
+        public static void CalculateAndPrintBinaryNumbersAverage(string i_FirstBinaryNumberString, string i_SecondBinaryNumberString, 
+            string i_ThirdBinaryNumberString, string i_ForthBinaryNumberString)
         {
             double sumOfDecimaValue = 0;
             double binaryNumbersAverage = 0;
@@ -150,10 +156,10 @@ namespace Ex01_01
             sumOfDecimaValue = valueOfFirstNumber + valueOfSecondNumber + valueOfThirdNumber + valueOfForthNumber;
             binaryNumbersAverage = sumOfDecimaValue / (double)k_AmountOfBinaryNumbers;
             int roundedTotal = (int)(binaryNumbersAverage * 100 + 0.5f);
-            int wholePart = roundedTotal / 100;
-            int decimalPart = roundedTotal % 100;
-            System.Console.Write("Average: {0}.{1}", wholePart, decimalPart);
-            if (decimalPart < 10)
+            int wholePartOfNumber = roundedTotal / 100;
+            int decimalPartOfNumber = roundedTotal % 100;
+            System.Console.Write("Average: {0}.{1}", wholePartOfNumber, decimalPartOfNumber);
+            if(decimalPartOfNumber < 10)
             {
                 System.Console.WriteLine("0");
             }
@@ -163,33 +169,33 @@ namespace Ex01_01
             }
         }
 
-        public static void FindAllBinaryNumbersWithLongestBitSequences(string i_FirstBinaryNumberString, string i_SecondBinaryNumberString, string i_ThirdBinaryNumberString, string i_ForthBinaryNumberString)
+        public static void FindAllBinaryNumbersWithLongestBitSequences(string i_FirstBinaryNumberString, string i_SecondBinaryNumberString, 
+            string i_ThirdBinaryNumberString, string i_ForthBinaryNumberString)
         {
-            int longestSequenceOfFirstNumber = CountLongestSequenceInString(i_FirstBinaryNumberString);
-            int longestSequenceOfSecondNumber = CountLongestSequenceInString(i_SecondBinaryNumberString);
-            int longestSequenceOfThirdNumber = CountLongestSequenceInString(i_ThirdBinaryNumberString);
-            int longestSequenceOfForthNumber = CountLongestSequenceInString(i_ForthBinaryNumberString);
+            int longestSequenceOfFirstNumber = countLongestSequenceInString(i_FirstBinaryNumberString);
+            int longestSequenceOfSecondNumber = countLongestSequenceInString(i_SecondBinaryNumberString);
+            int longestSequenceOfThirdNumber = countLongestSequenceInString(i_ThirdBinaryNumberString);
+            int longestSequenceOfForthNumber = countLongestSequenceInString(i_ForthBinaryNumberString);
             int maxSequenceLength = Math.Max(Math.Max(longestSequenceOfFirstNumber, longestSequenceOfSecondNumber), Math.Max(longestSequenceOfThirdNumber, longestSequenceOfForthNumber));
-            int amountOdNumbersWithLongestSequence = 0;
             bool isFirst = true;
 
             System.Console.Write("Longest bit sequence: {0} (", maxSequenceLength);
-            if (longestSequenceOfFirstNumber == maxSequenceLength)
+            if(longestSequenceOfFirstNumber == maxSequenceLength)
             {
                 printNumberWithLongestSequence(i_FirstBinaryNumberString, ref isFirst);
             }
 
-            if (longestSequenceOfSecondNumber == maxSequenceLength)
+            if(longestSequenceOfSecondNumber == maxSequenceLength)
             {
                 printNumberWithLongestSequence(i_SecondBinaryNumberString, ref isFirst);
             }
 
-            if (longestSequenceOfThirdNumber == maxSequenceLength)
+            if(longestSequenceOfThirdNumber == maxSequenceLength)
             {
                 printNumberWithLongestSequence(i_ThirdBinaryNumberString, ref isFirst);
             }
 
-            if (longestSequenceOfForthNumber == maxSequenceLength)
+            if(longestSequenceOfForthNumber == maxSequenceLength)
             {
                 printNumberWithLongestSequence(i_ForthBinaryNumberString, ref isFirst);
             }
@@ -199,15 +205,16 @@ namespace Ex01_01
 
         private static void printNumberWithLongestSequence(string i_BinaryStringToPrint, ref bool io_IsFirst)
         {
-            if (!io_IsFirst)
+            if(!io_IsFirst)
             {
                 System.Console.Write(", ");
             }
+
             System.Console.Write(i_BinaryStringToPrint);
             io_IsFirst = false;
         }
 
-        private static int CountLongestSequenceInString(string i_BinaryString)
+        private static int countLongestSequenceInString(string i_BinaryString)
         {
             int maxSequenceLength = 0;
             int currSequenceLength = 1;
@@ -215,7 +222,7 @@ namespace Ex01_01
 
             for(int i = 0; i < stringLength - 1; ++i) 
             {
-                if (i_BinaryString[i] == i_BinaryString[i + 1])
+                if(i_BinaryString[i] == i_BinaryString[i + 1])
                 {
                     ++currSequenceLength;
                 }
@@ -229,7 +236,8 @@ namespace Ex01_01
             return Math.Max(currSequenceLength, maxSequenceLength);
         }
 
-        public static void FindAndPrintTotalAmountOfOnes(string i_FirstBinaryNumberString, string i_SecondBinaryNumberString, string i_ThirdBinaryNumberString, string i_ForthBinaryNumberString)
+        public static void FindAndPrintTotalAmountOfOnes(string i_FirstBinaryNumberString, string i_SecondBinaryNumberString, 
+            string i_ThirdBinaryNumberString, string i_ForthBinaryNumberString)
         {
             int counterOfOne = 0;
 
@@ -246,7 +254,7 @@ namespace Ex01_01
 
             for(int i = 0; i < k_LengthOfBinaryNumbers; ++i)
             {
-                if (i_BinaryString[i] == '1')
+                if(i_BinaryString[i] == '1')
                 {
                     counterOfOne++;
                 }
@@ -255,7 +263,8 @@ namespace Ex01_01
             return counterOfOne;
         }
 
-        public static void FindAndPrintMostTransitionsInBinaryNumber(string i_FirstBinaryNumberString, string i_SecondBinaryNumberString, string i_ThirdBinaryNumberString, string i_ForthBinaryNumberString)
+        public static void FindAndPrintMostTransitionsInBinaryNumber(string i_FirstBinaryNumberString, string i_SecondBinaryNumberString, 
+            string i_ThirdBinaryNumberString, string i_ForthBinaryNumberString)
         {
             string mostTransitionsBinaryNumber = i_FirstBinaryNumberString;
             int maxAmountOfTransitions = countTransitionsInString(i_FirstBinaryNumberString);
@@ -268,14 +277,14 @@ namespace Ex01_01
             }
 
             tempTransitionsCounter = countTransitionsInString(i_ThirdBinaryNumberString);
-            if (tempTransitionsCounter >= maxAmountOfTransitions)
+            if(tempTransitionsCounter >= maxAmountOfTransitions)
             {
                 maxAmountOfTransitions = tempTransitionsCounter;
                 mostTransitionsBinaryNumber = i_ThirdBinaryNumberString;
             }
 
             tempTransitionsCounter = countTransitionsInString(i_ForthBinaryNumberString);
-            if (tempTransitionsCounter >= maxAmountOfTransitions)
+            if(tempTransitionsCounter >= maxAmountOfTransitions)
             {
                 maxAmountOfTransitions = tempTransitionsCounter;
                 mostTransitionsBinaryNumber = i_ForthBinaryNumberString;
@@ -289,9 +298,9 @@ namespace Ex01_01
         {
             int amountOfTransitions = 0;
 
-            for (int i = 0; i < k_LengthOfBinaryNumbers - 1; ++i)
+            for(int i = 0; i < k_LengthOfBinaryNumbers - 1; ++i)
             {
-                if (i_BinaryString[i] != i_BinaryString[i + 1])
+                if(i_BinaryString[i] != i_BinaryString[i + 1])
                 {
                     ++amountOfTransitions;
                 }
@@ -299,88 +308,62 @@ namespace Ex01_01
 
             return amountOfTransitions;
         }
-        public static void PrintAmountOfNumbersDividedBy(string i_FirstBinaryNumberString, string i_SecondBinaryNumberString, string i_ThirdBinaryNumberString, string i_ForthBinaryNumberString)
+
+        public static void PrintAmountOfNumbersDividedBy(string i_FirstBinaryNumberString, string i_SecondBinaryNumberString, 
+            string i_ThirdBinaryNumberString, string i_ForthBinaryNumberString)
         {
-            int amountOfDivisbleNumbers = 0;
-            int decimalValueOfFirstNumber = ConvertBinaryStringToDecimal(i_FirstBinaryNumberString);
-            int decimalValueOfSecondNumber = ConvertBinaryStringToDecimal(i_SecondBinaryNumberString);
-            int decimalValueOfThirdNumber = ConvertBinaryStringToDecimal(i_ThirdBinaryNumberString);
-            int decimalValueOfForthNumber = ConvertBinaryStringToDecimal(i_ForthBinaryNumberString);
-            bool isFirstDividedBy = IsDivisibleBy(k_divisorNumber, decimalValueOfFirstNumber);
-            bool isSecondDividedBy = IsDivisibleBy(k_divisorNumber, decimalValueOfSecondNumber);
-            bool isThirdDividedBy = IsDivisibleBy(k_divisorNumber, decimalValueOfThirdNumber);
-            bool isForthDividedBy = IsDivisibleBy(k_divisorNumber, decimalValueOfForthNumber);
+            int amountOfDivisbleNumbers = getDivisibilityBit(i_FirstBinaryNumberString) + getDivisibilityBit(i_SecondBinaryNumberString) + getDivisibilityBit(i_ThirdBinaryNumberString) + getDivisibilityBit(i_ForthBinaryNumberString);
 
-            if(isFirstDividedBy)
-            {
-                ++amountOfDivisbleNumbers;
-            }
-
-            if (isSecondDividedBy)
-            {
-                ++amountOfDivisbleNumbers;
-            }
-
-            if (isThirdDividedBy)
-            {
-                ++amountOfDivisbleNumbers;
-            }
-
-            if (isForthDividedBy)
-            {
-                ++amountOfDivisbleNumbers;
-            }
-
-            System.Console.Write("Numbers divisible by {0}: {1} ", k_divisorNumber, amountOfDivisbleNumbers);
-            if (amountOfDivisbleNumbers != 0)
+            System.Console.Write("Numbers divisible by {0}: {1} ", k_DivisorNumber, amountOfDivisbleNumbers);
+            if(amountOfDivisbleNumbers != 0)
             {
                 bool isFirstString = true;
                 System.Console.Write("(");
-                if (isForthDividedBy)
-                {
-                    printNumberDividedNumber(i_ForthBinaryNumberString, ref isFirstString);
-                }
-
-                if (isThirdDividedBy)
-                {
-                    printNumberDividedNumber(i_ThirdBinaryNumberString, ref isFirstString);
-                }
-
-                if (isSecondDividedBy)
-                {
-                    printNumberDividedNumber(i_SecondBinaryNumberString, ref isFirstString);
-                }
-
-                if (isFirstDividedBy)
-                {
-                    printNumberDividedNumber(i_FirstBinaryNumberString, ref isFirstString);
-                }
+                printIfDivisible(i_ForthBinaryNumberString, ref isFirstString);
+                printIfDivisible(i_ThirdBinaryNumberString, ref isFirstString);
+                printIfDivisible(i_SecondBinaryNumberString, ref isFirstString);
+                printIfDivisible(i_FirstBinaryNumberString, ref isFirstString);
 
                 System.Console.WriteLine(")");
             }
         }
 
+        private static void printIfDivisible(string i_BinaryString, ref bool io_IsFirst)
+        {
+            int decimalValue = ConvertBinaryStringToDecimal(i_BinaryString);
+            if (IsDivisibleBy(k_DivisorNumber, decimalValue))
+            {
+                printNumberDividedNumber(i_BinaryString, ref io_IsFirst);
+            }
+        }
+
+        private static int getDivisibilityBit(string i_BinaryString)
+        {
+            int decimalValue = ConvertBinaryStringToDecimal(i_BinaryString);
+            return IsDivisibleBy(k_DivisorNumber, decimalValue) ? 1 : 0;
+        }
+
         private static void printNumberDividedNumber(string i_BinaryStringToPrint, ref bool io_IsFirst)
         {
-            if (!io_IsFirst)
+            if(!io_IsFirst)
             {
                 System.Console.Write(", ");
             }
+
             System.Console.Write("{0}", i_BinaryStringToPrint);
             io_IsFirst = false;
         }
-        public static bool IsDivisibleBy(int i_divisorNumber, int i_dividedNumber)
+        public static bool IsDivisibleBy(int i_DivisorNumber, int i_DividedNumber)
         {
-            bool isDivisible = true;
+            bool isDivisible = false;
 
-            if (i_divisorNumber == 0)
+            if(i_DivisorNumber == 0)
             {
                 System.Console.WriteLine("Invalid input. can't be divided by 0");
-                isDivisible = false;
             }
             else
             {
-                isDivisible = ((i_dividedNumber % i_divisorNumber) == 0);
+                isDivisible = ((i_DividedNumber % i_DivisorNumber) == 0);
             }
 
             return isDivisible;

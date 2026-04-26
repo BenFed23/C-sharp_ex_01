@@ -11,21 +11,30 @@ namespace Ex01_03
     {
         public static void Main()
         {
-            string userStringInput;
-            int treeHeightNumber;
-            bool IsValidInput;
+            int treeHeightNumber = GetValidTreeHeight();
+            Ex01_02.Program.PrintLetterTreeByNumOfLines(treeHeightNumber);
+        }
+
+        public static int GetValidTreeHeight()
+        {
+            int treeHeightNumber = 0;
+            bool isValidInput = false;
 
             System.Console.WriteLine("Please enter a tree height (number between 4 - 15)");
-            userStringInput = System.Console.ReadLine();
-            IsValidInput = int.TryParse(userStringInput, out treeHeightNumber) && (treeHeightNumber <= 15 && treeHeightNumber >= 4);
-            while (!IsValidInput) { 
-                Console.WriteLine("Invalid input, please enter a valid number between 4 and 15");
-                userStringInput = System.Console.ReadLine();
-                IsValidInput = int.TryParse(userStringInput, out treeHeightNumber) && (treeHeightNumber <= 15 && treeHeightNumber >= 4);
+
+            while (!isValidInput)
+            {
+                string userStringInput = System.Console.ReadLine();
+                isValidInput = int.TryParse(userStringInput, out treeHeightNumber) && (treeHeightNumber <= 15 && treeHeightNumber >= 4);
+
+                if (!isValidInput)
+                {
+                    Console.WriteLine("Invalid input, please enter a valid number between 4 and 15");
+                }
             }
 
             Console.WriteLine();
-            LetterTreeBuilder.PrintLetterTreeByNumOfLines(treeHeightNumber);
+            return treeHeightNumber;
         }
     }
 }
