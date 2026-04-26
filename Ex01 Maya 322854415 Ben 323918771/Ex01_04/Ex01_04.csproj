@@ -36,10 +36,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AllLetters.cs" />
-    <Compile Include="AllNumbers.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="StringChecker.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
