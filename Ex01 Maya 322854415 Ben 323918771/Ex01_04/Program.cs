@@ -10,10 +10,10 @@ namespace Ex01_04
         {
             Console.WriteLine("Enter an 8-characters string");
             string userStringInput = Console.ReadLine();
-            if(userStringInput.Length != 8)
+            while(userStringInput.Length != 8)
             {
                 Console.WriteLine("The string needs to be 8 characters long, try again!");
-                return;
+                userStringInput = Console.ReadLine();
             }
 
             bool strIsPalindrome = IsPalindrome(userStringInput);
